@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://www.jetbrains.com/intellij-repository/releases" }
+        maven { url "https://jetbrains.bintray.com/intellij-third-party-dependencies" }
+    }
+    dependencies {
+        classpath 'com.squareup.sqldelight:gradle-plugin:1.5.3'
+    }
+
+}
+
+plugins {
+//    Warning. if for ever reason you ligit into 1.7.20 you are lost.
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+}
+
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.13.7'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileKotlin {
+//    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '15'
+
+}
+
+compileTestKotlin {
+//    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '15'
+
+}
+
+apply plugin: 'com.squareup.sqldelight'
+
+dependencies {
+    implementation 'com.squareup.sqldelight:jdbc-driver:1.5.1'
+    implementation 'com.zaxxer:HikariCP:5.0.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+//    implementation 'mysql:mysql-connector-java:8.0.26'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test:1.5.31'
+    implementation "com.squareup.sqldelight:sqlite-driver:1.5.3"
+}
+
+sqldelight {
+    Database
+            {
+                packageName = "com.example"
+            }
+}
+
+
+test {
+    useJUnitPlatform()
+}
