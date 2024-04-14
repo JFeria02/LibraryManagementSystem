@@ -50,6 +50,8 @@ JVM project using Java for the GUI and Kotlin for all other functions
 - Can be selected as an algorithm to use when searching the database
 - Can be used to sort by ID, title and author name
 
-## Video Demo
+## Demo Video
+
+https://drive.google.com/file/d/1KLJNQSy7ZqcwW8mY0Ymwc0jBchgpxjyc/preview
 
 
